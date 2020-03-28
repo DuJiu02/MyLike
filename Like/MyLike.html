@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+	<head>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+		<meta name='apple-mobile-web-app-capable' content='yes'>
+		<meta name='apple-mobile-web-app-status-bar-style' content='black'>
+		<meta name='format-detection' content='telephone=no'>
+		<meta charset="utf-8">
+		<title>你好</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<style type='text/css'>img{width:100%;}</style>
+		<table style="width:100%;font-size:1.1em">
+	</head>
+	<body>
+		
+			<div class="mb-box" id="mb-box" style="margin-top: 110px;">
+			<div class="bb">
+				<h2>你好</h2>
+				<div class="bb_text">
+					<div id="code" class="code">
+						你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!
+						你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!
+						你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!
+						你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!
+						你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!
+						你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!
+						你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!
+						你好!你好!你好!男孩子千万别当舔狗，也不要当别人的备胎，做自己!你好!你好!你好!你真的好吗!
+					</div>
+				</div>
+				<p class="bb_myname">你好<br />
+				</p>
+			</div>
+		</div>
+		
+		
+		<audio autoplay preload="auto"  loop id="audio">
+			<source src="music/合成多首_缩混.mp3" type="audio/mpeg"/>
+			您的浏览器不支持音频播放。
+		</audio>
+		
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			
+			//div中文字输出的，自个研究
+			Element.prototype.typewriter = function(a) {
+				var d = this,
+					c = d.innerHTML,
+					b = 0;
+				d.innerHTML = "";
+				var e = setInterval(function() {
+					var f = c.substr(b, 1);
+					if (f == "<") {
+						b = c.indexOf(">", b) + 1
+					} else {
+						b++
+					}
+					d.innerHTML = c.substring(0, b) + (b & 1 ? "_" : "");
+					if (b >= c.length) {
+						clearInterval(e)
+					}
+					$(".bb_text").scrollTop(999);
+				}, 150)
+				return this;
+			}
+			document.getElementById("code").typewriter();
+			
+			
+			
+			//因为兼容性原因，手机默认关闭自动播放，这是让手机自动播放得，自个研究
+			$(document).one('WeixinJSBridgeReady', function () {
+			    var audio = document.getElementById("audio");
+			    audio.play(); //执行一次
+			    // audio.setAttribute('src', 'music/musi.mp3'); // 替换src
+			    audio.load();
+			})
+			// 监听摇晃事件简化版
+			window.addEventListener('devicemotion', function () {
+			    document.getElementById("audio").play(); // 成功播放
+			}, false);
+			
+			
+		</script>
+	</body>
+</html>
